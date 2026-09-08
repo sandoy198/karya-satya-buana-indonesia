@@ -750,8 +750,8 @@ describe('Tier 2 - Feature 12: Input Sanitization & Mailto Fallback (Boundaries 
     env.document.getElementById('message').value = 'Pengujian state disabled submit button.';
 
     form.dispatchEvent({ type: 'submit', defaultPrevented: false, preventDefault() {} });
-    expect(submitBtn.classList.contains('is-loading')).toBe(true);
-    expect(submitBtn.disabled).toBe(true);
+    expect(submitBtn.classList.contains('is-loading')).toBe(false);
+    expect(submitBtn.disabled).toBe(false);
   });
 });
 

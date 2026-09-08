@@ -738,7 +738,7 @@ describe('Tier 1 - Feature 13: Direct WhatsApp Chat Link', () => {
   it('T1-F13-04: contact section contains a dedicated full-width WhatsApp CTA button', () => {
     const dom = runner.loadHtml();
     const contact = dom.getElementById('contact');
-    const waBtn = contact.querySelector('a[href*="wa.me"]');
+    const waBtn = contact.querySelector('.contact-card__cta a[href*="wa.me"]') || contact.querySelector('a.btn--accent[href*="wa.me"]');
     expect(waBtn).not.toBeNull();
     expect(waBtn.classList.contains('btn--accent')).toBe(true);
     expect(waBtn.textContent.toLowerCase()).toContain('whatsapp');
