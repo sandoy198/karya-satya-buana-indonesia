@@ -856,3 +856,61 @@ describe('Tier 1 - Feature 15: Zero Overflow & Core Web Vitals', () => {
     expect(imgDecls.height).toBe('auto');
   });
 });
+
+runner.describe('Tier 1 - Feature 16: Strategic Partners Grid & Dual Office Infrastructure', () => {
+  it('T1-F16-01: partners section renders with client logos including Amman Mineral, PT PIL, TCC, and MCC', () => {
+    const dom = runner.loadHtml();
+    const partners = dom.getElementById('partners');
+    expect(partners).not.toBeNull();
+
+    const partnerCards = partners.querySelectorAll('.partner-card');
+    expect(partnerCards.length).toBeGreaterThanOrEqual(6);
+
+    const partnerImages = partners.querySelectorAll('.partner-card__logo');
+    for (const img of partnerImages) {
+      expect(img.getAttribute('loading')).toBe('lazy');
+      expect(img.getAttribute('alt')).toBeTruthy();
+      expect(img.getAttribute('src')).toContain('assets/images/clients/');
+    }
+
+    const partnersText = partners.textContent.toLowerCase();
+    expect(partnersText).toContain('amman mineral');
+    expect(partnersText).toContain('pil');
+    expect(partnersText).toContain('tcc');
+    expect(partnersText).toContain('mcc');
+  });
+
+  it('T1-F16-02: dual office structure explicitly presents both Sumbawa Barat and Gorontalo offices', () => {
+    const dom = runner.loadHtml();
+    const headOffice = dom.querySelector('.office-card--head');
+    const branchOffice = dom.querySelector('.office-card--branch');
+
+    expect(headOffice).not.toBeNull();
+    expect(branchOffice).not.toBeNull();
+
+    expect(headOffice.textContent.toLowerCase()).toContain('sumbawa barat');
+    expect(branchOffice.textContent.toLowerCase()).toContain('gorontalo');
+    expect(branchOffice.textContent.toLowerCase()).toContain('pohuwato');
+  });
+
+  it('T1-F16-03: Schema.org structured data includes Gorontalo branch office department', () => {
+    const dom = runner.loadHtml();
+    const script = dom.querySelector('script[type="application/ld+json"]');
+    const json = JSON.parse(script.textContent);
+
+    expect(json.department).toBeTruthy();
+    expect(Array.isArray(json.department)).toBe(true);
+    expect(json.department[0].name).toContain('Gorontalo');
+    expect(json.department[0].address.addressLocality).toContain('Pohuwato');
+  });
+
+  it('T1-F16-04: Footer legal notice includes both KBLI 41013 and KBLI 78200', () => {
+    const dom = runner.loadHtml();
+    const footerLegal = dom.querySelector('.footer-legal');
+    expect(footerLegal).not.toBeNull();
+    expect(footerLegal.textContent).toContain('41013');
+    expect(footerLegal.textContent).toContain('78200');
+    expect(footerLegal.textContent).toContain('Gorontalo');
+  });
+});
+

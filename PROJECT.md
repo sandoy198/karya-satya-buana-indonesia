@@ -23,6 +23,7 @@
 | 13 | Direct WhatsApp Chat Link | Tautan langsung chat WhatsApp ke customer service dengan pesan tersandi `encodeURIComponent` | M3 | `ORIGINAL_REQUEST.md` R4 |
 | 14 | Schema.org LocalBusiness JSON-LD | Structured data lengkap dengan koordinat GeoCoordinates (-8.91113, 116.75098), alamat lengkap Maluk Sumbawa Barat, data pimpinan (founder Soejiman & Sutopo), dan KBLI resmi | M4 | `ORIGINAL_REQUEST.md` R5 |
 | 15 | Zero Overflow & Core Web Vitals | Zero horizontal overflow pada 320px–480px (`scrollWidth <= clientWidth`), zero console errors, touch target >= 44x44px | M4 | `ORIGINAL_REQUEST.md` R5 |
+| 16 | Strategic Partners Grid & Dual Office Infrastructure | Seksi `#partners` menampilkan 6 logo mitra industri (AMMAN, PT PIL, TCC, MCC 15, MCC 7, MCC 6), integrasi Dual Office (Kantor Pusat Sumbawa Barat & Cabang Pohuwato Gorontalo), sinkronisasi kontak dan Schema.org department | M7 | Bukti Legalitas & Referensi Lapangan |
 
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
@@ -33,6 +34,7 @@
 | M4 | Local SEO & Mobile Responsiveness Finalization | Schema.org LocalBusiness JSON-LD dengan koordinat & pimpinan, audit anti-overflow 320px-480px, audit font/contrast, dan kepatuhan anti-slop | M3 | DONE |
 | M5 | E2E Testing Suite & Quality Assurance | Verifikasi pengujian E2E otomatis (181 tests) dan validasi DOM/visual lintas breakpoint | M4 | DONE |
 | M6 | Adversarial Hardening & Forensic Audit | Pengujian ketahanan, stress testing form/drawer, audit integritas forensik mandiri (CLEAN) | M5 | DONE |
+| M7 | Strategic Partners & Dual Office Expansion | Penambahan seksi `#partners`, integrasi 6 logo mitra, dual office (Sumbawa Barat & Gorontalo), penambahan dokumen copywriting & SEO, 185 tests passing | M6 | DONE |
 
 ## Code Layout
 - `index.html`: Entry point single-page landing page.

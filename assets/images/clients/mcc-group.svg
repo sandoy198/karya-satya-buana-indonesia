@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <linearGradient id="mccBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0066B3"/>
+      <stop offset="100%" stop-color="#004380"/>
+    </linearGradient>
+  </defs>
+  <!-- Globe background circle -->
+  <g transform="translate(48, 40)">
+    <circle cx="0" cy="0" r="32" fill="#EAECEF" stroke="#BDC3C7" stroke-width="1.2"/>
+    <!-- Lat/Long lines -->
+    <ellipse cx="0" cy="0" rx="32" ry="12" fill="none" stroke="#BDC3C7" stroke-width="0.8"/>
+    <ellipse cx="0" cy="0" rx="16" ry="32" fill="none" stroke="#BDC3C7" stroke-width="0.8"/>
+    <line x1="-32" y1="0" x2="32" y2="0" stroke="#BDC3C7" stroke-width="0.8"/>
+    <line x1="0" y1="-32" x2="0" y2="32" stroke="#BDC3C7" stroke-width="0.8"/>
+    <!-- MCC Text overlay -->
+    <text x="0" y="11" font-family="'Arial Black', Impact, sans-serif" font-size="28" font-weight="900" fill="url(#mccBlue)" text-anchor="middle" font-style="italic" letter-spacing="-1">MCC</text>
+  </g>
+  <!-- Entity Title -->
+  <text x="96" y="34" font-family="'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="800" fill="#1A202C">MCC GROUP</text>
+  <text x="96" y="52" font-family="'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="10.5" font-weight="600" fill="#718096" letter-spacing="0.5">China Metallurgical Group Corporation</text>
+</svg>
