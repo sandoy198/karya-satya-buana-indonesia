@@ -313,6 +313,215 @@ const initializeCompanyProfile = () => {
     });
   });
 
+  const initializeGallery = () => {
+    const filterButtons = document.querySelectorAll('.gallery-filter-btn');
+    const galleryCards = Array.from(document.querySelectorAll('.gallery-card'));
+    const loadMoreButton = document.getElementById('gallery-load-more');
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCategory = document.getElementById('lightbox-category');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const lightboxTitle = document.getElementById('lightbox-title');
+
+    if (!galleryCards.length) return;
+
+    let activeFilter = 'all';
+    let isLoadMoreExpanded = false;
+    const INITIAL_VISIBLE_COUNT = 9;
+    let currentFilteredCards = [...galleryCards];
+    let currentLightboxIndex = 0;
+    let activeCardBeforeLightbox = null;
+
+    const updateCardVisibility = () => {
+      currentFilteredCards = galleryCards.filter((card) => {
+        const category = card.getAttribute('data-category');
+        return activeFilter === 'all' || category === activeFilter;
+      });
+
+      galleryCards.forEach((card) => {
+        const category = card.getAttribute('data-category');
+        const matchesFilter = activeFilter === 'all' || category === activeFilter;
+
+        if (!matchesFilter) {
+          card.classList.add('is-filtered-out');
+          card.classList.remove('is-hidden');
+        } else {
+          card.classList.remove('is-filtered-out');
+        }
+      });
+
+      const maxToDisplay = isLoadMoreExpanded ? currentFilteredCards.length : INITIAL_VISIBLE_COUNT;
+
+      currentFilteredCards.forEach((card, index) => {
+        if (index < maxToDisplay) {
+          card.classList.remove('is-hidden');
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+
+      if (loadMoreButton) {
+        if (currentFilteredCards.length <= INITIAL_VISIBLE_COUNT) {
+          loadMoreButton.classList.add('is-hidden');
+        } else {
+          loadMoreButton.classList.remove('is-hidden');
+          const spanText = loadMoreButton.querySelector('span');
+          if (spanText) {
+            spanText.textContent = isLoadMoreExpanded ? 'Tampilkan Lebih Sedikit' : 'Muat Lebih Banyak Dokumentasi';
+          }
+          loadMoreButton.setAttribute('aria-expanded', isLoadMoreExpanded ? 'true' : 'false');
+        }
+      }
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filterValue = button.getAttribute('data-filter') || 'all';
+        activeFilter = filterValue;
+        isLoadMoreExpanded = false;
+
+        filterButtons.forEach((btn) => {
+          const isActive = btn === button;
+          btn.classList.toggle('is-active', isActive);
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        updateCardVisibility();
+      });
+    });
+
+    if (loadMoreButton) {
+      loadMoreButton.addEventListener('click', () => {
+        isLoadMoreExpanded = !isLoadMoreExpanded;
+        updateCardVisibility();
+      });
+    }
+
+    const openLightbox = (index) => {
+      if (!lightboxModal || !currentFilteredCards.length) return;
+      currentLightboxIndex = (index + currentFilteredCards.length) % currentFilteredCards.length;
+      const targetCard = currentFilteredCards[currentLightboxIndex];
+      if (!targetCard) return;
+
+      const imgElement = targetCard.querySelector('.gallery-card__img');
+      const badgeElement = targetCard.querySelector('.gallery-card__badge');
+      const titleElement = targetCard.querySelector('.gallery-card__title');
+
+      if (lightboxImage && imgElement) {
+        lightboxImage.src = imgElement.src;
+        lightboxImage.alt = imgElement.alt;
+      }
+      if (lightboxCategory && badgeElement) {
+        lightboxCategory.textContent = badgeElement.textContent;
+      }
+      if (lightboxTitle && titleElement) {
+        lightboxTitle.textContent = titleElement.textContent;
+      }
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${currentFilteredCards.length}`;
+      }
+
+      activeCardBeforeLightbox = document.activeElement;
+      lightboxModal.classList.add('is-open');
+      lightboxModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      if (lightboxClose) {
+        lightboxClose.focus();
+      }
+    };
+
+    const closeLightbox = () => {
+      if (!lightboxModal) return;
+      lightboxModal.classList.remove('is-open');
+      lightboxModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+
+      if (activeCardBeforeLightbox && typeof activeCardBeforeLightbox.focus === 'function') {
+        activeCardBeforeLightbox.focus();
+      }
+    };
+
+    const showPrevImage = () => {
+      openLightbox(currentLightboxIndex - 1);
+    };
+
+    const showNextImage = () => {
+      openLightbox(currentLightboxIndex + 1);
+    };
+
+    galleryCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const filteredIndex = currentFilteredCards.indexOf(card);
+        if (filteredIndex !== -1) {
+          openLightbox(filteredIndex);
+        }
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          const filteredIndex = currentFilteredCards.indexOf(card);
+          if (filteredIndex !== -1) {
+            openLightbox(filteredIndex);
+          }
+        }
+      });
+    });
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+    if (lightboxBackdrop) {
+      lightboxBackdrop.addEventListener('click', closeLightbox);
+    }
+    if (lightboxPrev) {
+      lightboxPrev.addEventListener('click', showPrevImage);
+    }
+    if (lightboxNext) {
+      lightboxNext.addEventListener('click', showNextImage);
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (!lightboxModal || !lightboxModal.classList.contains('is-open')) return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeLightbox();
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        showPrevImage();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        showNextImage();
+      } else if (event.key === 'Tab') {
+        const focusableElements = Array.from(
+          lightboxModal.querySelectorAll('button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+        );
+        if (!focusableElements.length) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    });
+
+    updateCardVisibility();
+  };
+
+  initializeGallery();
+
   const inPageLinks = document.querySelectorAll('.skip-link, .desktop-nav a, .desktop-actions a, .brand-link, .hero-actions a, .footer-nav a');
   inPageLinks.forEach((link) => {
     link.addEventListener('click', () => {

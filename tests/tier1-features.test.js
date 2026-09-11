@@ -914,3 +914,55 @@ runner.describe('Tier 1 - Feature 16: Strategic Partners Grid & Dual Office Infr
   });
 });
 
+describe('Tier 1 - Feature 17: Interactive Gallery Category Filters & Lightbox Modal', () => {
+  it('T1-F17-01: navigation bars include direct Galeri links pointing to #gallery', () => {
+    const dom = runner.loadHtml();
+    const desktopLink = dom.querySelector('.desktop-nav a[href="#gallery"]');
+    const drawerLink = dom.querySelector('.mobile-drawer__nav a[href="#gallery"]');
+    expect(desktopLink).not.toBeNull();
+    expect(drawerLink).not.toBeNull();
+    expect(desktopLink.textContent.toLowerCase()).toContain('galeri');
+    expect(drawerLink.textContent.toLowerCase()).toContain('galeri');
+  });
+
+  it('T1-F17-02: gallery section renders category filter tabs with 5 distinct filters', () => {
+    const dom = runner.loadHtml();
+    const filters = dom.querySelectorAll('.gallery-filter-btn');
+    expect(filters.length).toBe(5);
+    const filterValues = filters.map((btn) => btn.getAttribute('data-filter'));
+    expect(filterValues).toContain('all');
+    expect(filterValues).toContain('smelter');
+    expect(filterValues).toContain('mechanical');
+    expect(filterValues).toContain('electrical');
+    expect(filterValues).toContain('safety-manpower');
+  });
+
+  it('T1-F17-03: gallery renders 16 curated photos with AMIN copper smelter documentation', () => {
+    const dom = runner.loadHtml();
+    const cards = dom.querySelectorAll('.gallery-card');
+    expect(cards.length).toBe(16);
+    const smelterCards = cards.filter((c) => c.getAttribute('data-category') === 'smelter');
+    expect(smelterCards.length).toBe(4);
+    const smelterText = smelterCards.map((c) => c.textContent).join(' ');
+    expect(smelterText).toContain('Smelter Tembaga AMIN');
+  });
+
+  it('T1-F17-04: lightbox modal element exists in DOM with accessible attributes', () => {
+    const dom = runner.loadHtml();
+    const modal = dom.getElementById('lightbox-modal');
+    expect(modal).not.toBeNull();
+    expect(modal.getAttribute('role')).toBe('dialog');
+    expect(modal.getAttribute('aria-modal')).toBe('true');
+    expect(modal.querySelector('#lightbox-close')).not.toBeNull();
+    expect(modal.querySelector('#lightbox-prev')).not.toBeNull();
+    expect(modal.querySelector('#lightbox-next')).not.toBeNull();
+  });
+
+  it('T1-F17-05: gallery actions provide progressive load more button', () => {
+    const dom = runner.loadHtml();
+    const loadMoreBtn = dom.getElementById('gallery-load-more');
+    expect(loadMoreBtn).not.toBeNull();
+    expect(loadMoreBtn.textContent.toLowerCase()).toContain('muat lebih banyak');
+  });
+});
+

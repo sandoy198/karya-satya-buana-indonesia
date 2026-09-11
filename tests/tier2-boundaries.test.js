@@ -263,13 +263,13 @@ describe('Tier 2 - Feature 05: Mine Operations Photo Showcase Gallery (Boundarie
     expect(cardDecls['background-color'] || cardDecls.background).toBeTruthy();
   });
 
-  it('T2-F05-02: gallery renders bounded image count between 4 and 12 photos for performance', () => {
+  it('T2-F05-02: gallery renders bounded image count between 4 and 20 photos for performance', () => {
     const dom = runner.loadHtml();
     const section = dom.getElementById('gallery');
     expect(section).not.toBeNull();
     const images = section.querySelectorAll('img');
     expect(images.length).toBeGreaterThanOrEqual(4);
-    expect(images.length).toBeLessThanOrEqual(12);
+    expect(images.length).toBeLessThanOrEqual(20);
   });
 
   it('T2-F05-03: gallery grid reflows responsively across screen widths', () => {
