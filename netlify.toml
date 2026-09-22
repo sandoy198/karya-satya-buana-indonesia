@@ -1,0 +1,40 @@
+# ==============================================================================
+#  MODE PEMELIHARAAN (MAINTENANCE MODE) — STATUS: AKTIF
+#
+#  Seluruh pengunjung diarahkan ke /maintenance.html dengan status HTTP 503.
+#  Status 503 (bukan 404) memberi tahu Google bahwa ini bersifat sementara,
+#  sehingga peringkat dan indeks pencarian situs tetap aman.
+#
+#  >> UNTUK MENGEMBALIKAN SITUS ONLINE:
+#     Hapus seluruh isi file ini (atau beri tanda # di setiap baris aturan
+#     [[redirects]] di bawah), lalu deploy ulang. Konten asli di index.html
+#     tidak diubah sama sekali dan akan langsung tampil kembali.
+# ==============================================================================
+
+# -- Aset yang tetap boleh diakses agar halaman pemeliharaan tampil utuh --
+
+[[redirects]]
+  from = "/maintenance.html"
+  to = "/maintenance.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/assets/images/logo.png"
+  to = "/assets/images/logo.png"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.ico"
+  status = 200
+  force = true
+
+# -- Semua permintaan lain dialihkan ke halaman pemeliharaan --
+
+[[redirects]]
+  from = "/*"
+  to = "/maintenance.html"
+  status = 503
+  force = true
