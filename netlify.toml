@@ -26,3 +26,41 @@
 #   status = 503
 #   force = true
 
+[[redirects]]
+  from = "/.env*"
+  to = "/index.html"
+  status = 403
+  force = true
+
+[[redirects]]
+  from = "/config/*"
+  to = "/index.html"
+  status = 403
+  force = true
+
+[[redirects]]
+  from = "/*.php*"
+  to = "/index.html"
+  status = 403
+  force = true
+
+[[redirects]]
+  from = "/wp-*"
+  to = "/index.html"
+  status = 403
+  force = true
+
+[[redirects]]
+  from = "/.git*"
+  to = "/index.html"
+  status = 403
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
