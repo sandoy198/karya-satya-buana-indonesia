@@ -9,6 +9,166 @@ const initializeCompanyProfile = () => {
   const submitButton = document.getElementById('submit-btn');
   const formFeedback = document.getElementById('form-feedback');
 
+  const getTranslationsDict = () => {
+    if (typeof TRANSLATIONS !== 'undefined') return TRANSLATIONS;
+    if (typeof window !== 'undefined' && window.TRANSLATIONS) return window.TRANSLATIONS;
+    return null;
+  };
+
+  const getSavedLanguage = () => {
+    try {
+      if (typeof localStorage !== 'undefined') {
+        const val = localStorage.getItem('ksbi_lang');
+        if (val && ['id', 'en', 'zh'].includes(val)) return val;
+      }
+    } catch (e) {}
+    return 'id';
+  };
+
+  const setSavedLanguage = (lang) => {
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('ksbi_lang', lang);
+      }
+    } catch (e) {}
+  };
+
+  let currentLang = getSavedLanguage();
+
+  const getNestedTranslation = (obj, pathKey) => {
+    if (!obj || !pathKey) return null;
+    return pathKey.split('.').reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : null), obj);
+  };
+
+  const applyTranslations = (lang) => {
+    const allTranslations = getTranslationsDict();
+    if (!allTranslations) return;
+    const dict = allTranslations[lang] || allTranslations.id;
+    if (!dict) return;
+
+    currentLang = lang;
+    setSavedLanguage(lang);
+    if (document.documentElement) {
+      document.documentElement.lang = lang;
+    }
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      const text = getNestedTranslation(dict, key);
+      if (text) {
+        el.textContent = text;
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const text = getNestedTranslation(dict, key);
+      if (text) {
+        el.setAttribute('placeholder', text);
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-aria');
+      const text = getNestedTranslation(dict, key);
+      if (text) {
+        el.setAttribute('aria-label', text);
+      }
+    });
+
+    const desktopCurrent = document.getElementById('desktop-lang-current');
+    if (desktopCurrent) {
+      desktopCurrent.textContent = lang.toUpperCase();
+    }
+    const mobileCurrent = document.getElementById('mobile-lang-current');
+    if (mobileCurrent) {
+      mobileCurrent.textContent = lang.toUpperCase();
+    }
+
+    document.querySelectorAll('.lang-dropdown__item').forEach((item) => {
+      const itemLang = item.getAttribute('data-lang');
+      const isActive = itemLang === lang;
+      item.classList.toggle('is-active', isActive);
+      item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    const galleryLoadMoreBtn = document.getElementById('gallery-load-more');
+    if (galleryLoadMoreBtn) {
+      const span = galleryLoadMoreBtn.querySelector('span');
+      if (span) {
+        const isExpanded = galleryLoadMoreBtn.getAttribute('aria-expanded') === 'true';
+        span.textContent = isExpanded ? (dict.gallery.loadLess || 'Tampilkan Lebih Sedikit') : (dict.gallery.loadMore || 'Muat Lebih Banyak Dokumentasi');
+      }
+    }
+  };
+
+  const setupLanguageDropdowns = () => {
+    const dropdowns = [
+      {
+        dropdown: document.getElementById('desktop-lang-dropdown'),
+        trigger: document.getElementById('desktop-lang-trigger')
+      },
+      {
+        dropdown: document.getElementById('mobile-lang-dropdown'),
+        trigger: document.getElementById('mobile-lang-trigger')
+      }
+    ];
+
+    const closeAllDropdowns = () => {
+      dropdowns.forEach(({ dropdown, trigger }) => {
+        if (dropdown) {
+          dropdown.classList.remove('is-open');
+        }
+        if (trigger) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    };
+
+    dropdowns.forEach(({ dropdown, trigger }) => {
+      if (!dropdown || !trigger) return;
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = dropdown.classList.contains('is-open');
+        closeAllDropdowns();
+        if (!isOpen) {
+          dropdown.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      const items = dropdown.querySelectorAll('.lang-dropdown__item');
+      items.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetLang = item.getAttribute('data-lang');
+          if (targetLang) {
+            applyTranslations(targetLang);
+          }
+          closeAllDropdowns();
+          trigger.focus();
+        });
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      const isInside = dropdowns.some(
+        ({ dropdown }) => dropdown && typeof dropdown.contains === 'function' && dropdown.contains(e.target)
+      );
+      if (!isInside) {
+        closeAllDropdowns();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeAllDropdowns();
+      }
+    });
+  };
+
+
   const updateHeaderOnScroll = () => {
     if (!siteHeader) return;
     if (window.scrollY > 20) {
@@ -521,6 +681,8 @@ const initializeCompanyProfile = () => {
   };
 
   initializeGallery();
+  setupLanguageDropdowns();
+  applyTranslations(currentLang);
 
   const inPageLinks = document.querySelectorAll('.skip-link, .desktop-nav a, .desktop-actions a, .brand-link, .hero-actions a, .footer-nav a');
   inPageLinks.forEach((link) => {

@@ -103,10 +103,11 @@
     ]
   }
   </script>
+  <script src="assets/js/translations.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Menuju ke Konten Utama</a>
+  <a href="#main-content" class="skip-link" data-i18n="nav.skipLink">Menuju ke Konten Utama</a>
 
   <header class="site-header" id="site-header">
     <div class="container site-header__inner">
@@ -129,8 +130,29 @@
         </ul>
       </nav>
 
-      <div class="desktop-actions">
-        <a href="#contact" class="btn btn--primary btn--compact">Hubungi Kami</a>
+            <div class="desktop-actions">
+        <div class="lang-dropdown" id="desktop-lang-dropdown">
+          <button type="button" class="lang-dropdown__trigger" id="desktop-lang-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Pilih Bahasa / Select Language">
+            <span class="lang-dropdown__icon" aria-hidden="true">🌐</span>
+            <span class="lang-dropdown__current" id="desktop-lang-current">ID</span>
+            <span class="lang-dropdown__arrow" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="lang-dropdown__menu" role="listbox" aria-labelledby="desktop-lang-trigger">
+            <button type="button" class="lang-dropdown__item is-active" role="option" aria-selected="true" data-lang="id">
+              <span class="lang-dropdown__code">ID</span>
+              <span class="lang-dropdown__name">Bahasa Indonesia</span>
+            </button>
+            <button type="button" class="lang-dropdown__item" role="option" aria-selected="false" data-lang="en">
+              <span class="lang-dropdown__code">EN</span>
+              <span class="lang-dropdown__name">English</span>
+            </button>
+            <button type="button" class="lang-dropdown__item" role="option" aria-selected="false" data-lang="zh">
+              <span class="lang-dropdown__code">ZH</span>
+              <span class="lang-dropdown__name">中文</span>
+            </button>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn--primary btn--compact" data-i18n="nav.contactCta">Hubungi Kami</a>
       </div>
 
       <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Buka Menu Navigasi">
@@ -146,10 +168,31 @@
   <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
 
   <aside class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile" aria-hidden="true">
-    <div class="mobile-drawer__header">
+        <div class="mobile-drawer__header">
       <div class="brand-text">
         <span class="brand-text__title">PT KSBI</span>
         <span class="brand-text__subtitle">Menu Navigasi</span>
+      </div>
+      <div class="lang-dropdown" id="mobile-lang-dropdown">
+        <button type="button" class="lang-dropdown__trigger" id="mobile-lang-trigger" aria-expanded="false" aria-haspopup="listbox" aria-label="Pilih Bahasa / Select Language">
+          <span class="lang-dropdown__icon" aria-hidden="true">🌐</span>
+          <span class="lang-dropdown__current" id="mobile-lang-current">ID</span>
+          <span class="lang-dropdown__arrow" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="lang-dropdown__menu" role="listbox" aria-labelledby="mobile-lang-trigger">
+          <button type="button" class="lang-dropdown__item is-active" role="option" aria-selected="true" data-lang="id">
+            <span class="lang-dropdown__code">ID</span>
+            <span class="lang-dropdown__name">Bahasa Indonesia</span>
+          </button>
+          <button type="button" class="lang-dropdown__item" role="option" aria-selected="false" data-lang="en">
+            <span class="lang-dropdown__code">EN</span>
+            <span class="lang-dropdown__name">English</span>
+          </button>
+          <button type="button" class="lang-dropdown__item" role="option" aria-selected="false" data-lang="zh">
+            <span class="lang-dropdown__code">ZH</span>
+            <span class="lang-dropdown__name">中文</span>
+          </button>
+        </div>
       </div>
       <button type="button" class="drawer-close" id="drawer-close" aria-label="Tutup Menu Navigasi">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -169,8 +212,8 @@
     </nav>
 
     <div class="mobile-drawer__footer">
-      <a href="https://wa.me/6282236881925?text=Halo%20Tim%20PT%20Karya%20Satya%20Buana%20Indonesia%2C%20saya%20tertarik%20untuk%20mengetahui%20layanan%20penunjang%20operasional%20perusahaan." class="btn btn--accent btn--compact mobile-nav-link" target="_blank" rel="noopener noreferrer">WhatsApp Cepat</a>
-      <a href="#contact" class="btn btn--primary btn--compact mobile-nav-link">Kirim Pesan Inquiry</a>
+      <a href="https://wa.me/6282236881925?text=Halo%20Tim%20PT%20Karya%20Satya%20Buana%20Indonesia%2C%20saya%20tertarik%20untuk%20mengetahui%20layanan%20penunjang%20operasional%20perusahaan." class="btn btn--accent btn--compact mobile-nav-link" target="_blank" rel="noopener noreferrer" data-i18n="nav.waQuick">WhatsApp Cepat</a>
+      <a href="#contact" class="btn btn--primary btn--compact mobile-nav-link" data-i18n="nav.sendInquiry">Kirim Pesan Inquiry</a>
     </div>
   </aside>
 
@@ -181,26 +224,26 @@
         <div class="hero-grid">
           <div class="hero-content">
             <div class="section-badge">
-              <span>Mitra Operasional &amp; Solusi Tenaga Kerja</span>
+              <span data-i18n="hero.badge">Mitra Operasional &amp; Solusi Tenaga Kerja</span>
             </div>
-            <h1 class="hero-title" id="hero-title">Solusi Terintegrasi Penunjang Pertambangan dan Manajemen SDM Profesional</h1>
-            <p class="hero-lead">Mendukung kelancaran operasional industri pertambangan, penggalian, dan ketenagakerjaan melalui layanan berbasis kontrak yang terstandarisasi, aman, dan patuh regulasi nasional.</p>
+            <h1 class="hero-title" id="hero-title" data-i18n="hero.title">Solusi Terintegrasi Penunjang Pertambangan dan Manajemen SDM Profesional</h1>
+            <p class="hero-lead" data-i18n="hero.lead">Mendukung kelancaran operasional industri pertambangan, penggalian, dan ketenagakerjaan melalui layanan berbasis kontrak yang terstandarisasi, aman, dan patuh regulasi nasional.</p>
             <div class="hero-actions">
-              <a href="#services" class="btn btn--primary">Pelajari Layanan Kami</a>
-              <a href="#contact" class="btn btn--secondary">Konsultasi Kebutuhan Proyek</a>
+              <a href="#services" class="btn btn--primary" data-i18n="hero.ctaPrimary">Pelajari Layanan Kami</a>
+              <a href="#contact" class="btn btn--secondary" data-i18n="hero.ctaSecondary">Konsultasi Kebutuhan Proyek</a>
             </div>
             <div class="hero-highlights">
               <div class="highlight-pill">
                 <span class="highlight-pill__dot" aria-hidden="true"></span>
-                <span>Domisili Sumbawa Barat, NTB</span>
+                <span data-i18n="hero.pillSafety">Domisili Sumbawa Barat, NTB</span>
               </div>
               <div class="highlight-pill">
                 <span class="highlight-pill__dot" aria-hidden="true"></span>
-                <span>Standar K3 Berkelanjutan</span>
+                <span data-i18n="hero.pillQuality">Standar K3 Berkelanjutan</span>
               </div>
               <div class="highlight-pill">
                 <span class="highlight-pill__dot" aria-hidden="true"></span>
-                <span>Tenaga Kerja Terampil &amp; Tersertifikasi</span>
+                <span data-i18n="hero.pillEfficiency">Tenaga Kerja Terampil &amp; Tersertifikasi</span>
               </div>
             </div>
           </div>
@@ -208,8 +251,8 @@
           <div class="hero-visual">
             <img src="assets/images/hero-inspection.jpeg" alt="Tim teknisi dan pengawas PT Karya Satya Buana Indonesia saat uji earthing resistance dan inspeksi fasilitas industri" class="hero-visual__image" width="600" height="440">
             <div class="hero-visual__card">
-              <div class="hero-visual__badge">Inspeksi &amp; Operasional Lapangan</div>
-              <div class="hero-visual__caption">Pelaksanaan pengujian teknis berstandar tinggi langsung di lokasi proyek operasional.</div>
+              <div class="hero-visual__badge" data-i18n="hero.cardTitle">Inspeksi &amp; Operasional Lapangan</div>
+              <div class="hero-visual__caption" data-i18n="hero.cardDesc">Pelaksanaan pengujian teknis berstandar tinggi langsung di lokasi proyek operasional.</div>
             </div>
           </div>
         </div>
@@ -222,8 +265,8 @@
           <div class="section-badge section-badge--accent">
             <span>Profil Perusahaan</span>
           </div>
-          <h2 class="section-title" id="about-title">Fondasi Integritas, Kompetensi, dan Keselamatan Kerja</h2>
-          <p class="section-description">PT Karya Satya Buana Indonesia berfokus pada penyediaan jasa penunjang pertambangan serta pengelolaan sumber daya manusia yang siap mendukung produktivitas perusahaan mitra secara aman dan berkelanjutan.</p>
+          <h2 class="section-title" id="about-title" data-i18n="about.title">Fondasi Integritas, Kompetensi, dan Keselamatan Kerja</h2>
+          <p class="section-description" data-i18n="about.desc">PT Karya Satya Buana Indonesia berfokus pada penyediaan jasa penunjang pertambangan serta pengelolaan sumber daya manusia yang siap mendukung produktivitas perusahaan mitra secara aman dan berkelanjutan.</p>
         </div>
 
         <div class="about-grid">
@@ -234,8 +277,8 @@
                 <polyline points="9 12 11 14 15 10"></polyline>
               </svg>
             </div>
-            <h3 class="value-card__title">Integritas Teruji</h3>
-            <p class="value-card__description">Menjunjung tinggi transparansi, kepatuhan legalitas hukum ketenagakerjaan, dan kejujuran dalam setiap kesepakatan kemitraan.</p>
+            <h3 class="value-card__title" data-i18n="about.valueSafetyTitle">Integritas Teruji</h3>
+            <p class="value-card__description" data-i18n="about.valueSafetyDesc">Menjunjung tinggi transparansi, kepatuhan legalitas hukum ketenagakerjaan, dan kejujuran dalam setiap kesepakatan kemitraan.</p>
           </div>
 
           <div class="value-card">
@@ -245,8 +288,8 @@
                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
               </svg>
             </div>
-            <h3 class="value-card__title">Profesionalisme Terarah</h3>
-            <p class="value-card__description">Didukung tim ahli yang memiliki pengalaman teknis dan pemahaman mendalam tentang tata kelola lapangan dan standar K3 industri.</p>
+            <h3 class="value-card__title" data-i18n="about.valueIntegrityTitle">Profesionalisme Terarah</h3>
+            <p class="value-card__description" data-i18n="about.valueIntegrityDesc">Didukung tim ahli yang memiliki pengalaman teknis dan pemahaman mendalam tentang tata kelola lapangan dan standar K3 industri.</p>
           </div>
 
           <div class="value-card">
@@ -256,8 +299,8 @@
                 <polyline points="17 6 23 6 23 12"></polyline>
               </svg>
             </div>
-            <h3 class="value-card__title">Tumbuh Berkelanjutan</h3>
-            <p class="value-card__description">Membangun kolaborasi jangka panjang dengan klien melalui peningkatan kompetensi SDM dan efisiensi operasional terukur.</p>
+            <h3 class="value-card__title" data-i18n="about.valueQualityTitle">Tumbuh Berkelanjutan</h3>
+            <p class="value-card__description" data-i18n="about.valueQualityDesc">Membangun kolaborasi jangka panjang dengan klien melalui peningkatan kompetensi SDM dan efisiensi operasional terukur.</p>
           </div>
         </div>
 
@@ -266,17 +309,17 @@
             <img src="assets/images/walkdown.jpeg" alt="Dokumentasi walkdown berkala gedung pendukung operasional pertambangan oleh tim PT Karya Satya Buana Indonesia" class="operation-showcase__image" width="560" height="360" loading="lazy">
           </div>
           <div class="operation-showcase__content">
-            <span class="operation-showcase__tag">Dokumentasi Lapangan &amp; K3</span>
-            <h3 class="operation-showcase__title">Pengawasan dan Pemeliharaan Fasilitas Proyek Berkelanjutan</h3>
-            <p class="operation-showcase__description">Tim lapangan kami secara berkala melaksanakan walkdown dan inspeksi komprehensif pada gedung pendukung fasilitas industri guna memastikan kepatuhan standar keselamatan kerja, integritas struktur, dan kesiapan operasional tanpa henti.</p>
+            <span class="operation-showcase__tag" data-i18n="about.opShowcaseTag">Dokumentasi Lapangan &amp; K3</span>
+            <h3 class="operation-showcase__title" data-i18n="about.opShowcaseTitle">Pengawasan dan Pemeliharaan Fasilitas Proyek Berkelanjutan</h3>
+            <p class="operation-showcase__description" data-i18n="about.opShowcaseDesc">Tim lapangan kami secara berkala melaksanakan walkdown dan inspeksi komprehensif pada gedung pendukung fasilitas industri guna memastikan kepatuhan standar keselamatan kerja, integritas struktur, dan kesiapan operasional tanpa henti.</p>
             <div class="operation-showcase__points">
               <div class="operation-showcase__point">
                 <span class="operation-showcase__bullet" aria-hidden="true">&check;</span>
-                <span>Pemeriksaan berkala sarana dan prasarana tapak proyek</span>
+                <span data-i18n="about.opCheck1">Pemeriksaan berkala sarana dan prasarana tapak proyek</span>
               </div>
               <div class="operation-showcase__point">
                 <span class="operation-showcase__bullet" aria-hidden="true">&check;</span>
-                <span>Penerapan standar Zero Accident dan protokol K3 ketat</span>
+                <span data-i18n="about.opCheck2">Penerapan standar Zero Accident dan protokol K3 ketat</span>
               </div>
             </div>
           </div>
@@ -290,8 +333,8 @@
           <div class="section-badge">
             <span>Kapabilitas Inti</span>
           </div>
-          <h2 class="section-title" id="services-title">Layanan Penunjang Operasional &amp; Manajemen SDM</h2>
-          <p class="section-description">Solusi berbasis kontrak yang dirancang spesifik untuk menjawab tantangan operasional pertambangan dan kebutuhan tenaga kerja industri modern.</p>
+          <h2 class="section-title" id="services-title" data-i18n="services.title">Layanan Penunjang Operasional &amp; Manajemen SDM</h2>
+          <p class="section-description" data-i18n="services.desc">Solusi berbasis kontrak yang dirancang spesifik untuk menjawab tantangan operasional pertambangan dan kebutuhan tenaga kerja industri modern.</p>
         </div>
 
         <div class="services-grid">
@@ -307,13 +350,13 @@
                     <path d="M2 22h20"></path>
                   </svg>
                 </div>
-                <span class="service-card__tag">Operasional Tambang</span>
+                <span class="service-card__tag" data-i18n="services.s1Tag">Operasional Tambang</span>
               </div>
-              <h3 class="service-card__title">Aktivitas Penunjang Pertambangan &amp; Penggalian</h3>
-              <p class="service-card__description">Jasa berbasis kontrak untuk aktivitas penunjang lapangan seperti pemompaan, penanganan material, penyaluran hasil tambang, dan uji kelayakan eksplorasi.</p>
+              <h3 class="service-card__title" data-i18n="services.s1Title">Aktivitas Penunjang Pertambangan &amp; Penggalian</h3>
+              <p class="service-card__description" data-i18n="services.s1Desc">Jasa berbasis kontrak untuk aktivitas penunjang lapangan seperti pemompaan, penanganan material, penyaluran hasil tambang, dan uji kelayakan eksplorasi.</p>
             </div>
             <div class="service-card__action">
-              <a href="#contact" class="service-card__link" data-service="Aktivitas Penunjang Pertambangan">Konsultasikan Layanan Ini</a>
+              <a href="#contact" class="service-card__link" data-i18n="services.consultCta" data-service="Aktivitas Penunjang Pertambangan">Konsultasikan Layanan Ini</a>
             </div>
           </article>
 
@@ -328,13 +371,13 @@
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                   </svg>
                 </div>
-                <span class="service-card__tag">Penyediaan Tenaga Kerja</span>
+                <span class="service-card__tag" data-i18n="services.s2Tag">Penyediaan Tenaga Kerja</span>
               </div>
-              <h3 class="service-card__title">Penyediaan Tenaga Kerja (Manpower Supply)</h3>
-              <p class="service-card__description">Penyediaan tenaga kerja terampil, teknisi bersertifikasi, operator, dan personel penunjang yang siap diterjunkan sesuai kualifikasi teknis proyek Anda.</p>
+              <h3 class="service-card__title" data-i18n="services.s2Title">Penyediaan Tenaga Kerja (Manpower Supply)</h3>
+              <p class="service-card__description" data-i18n="services.s2Desc">Penyediaan tenaga kerja terampil, teknisi bersertifikasi, operator, dan personel penunjang yang siap diterjunkan sesuai kualifikasi teknis proyek Anda.</p>
             </div>
             <div class="service-card__action">
-              <a href="#contact" class="service-card__link" data-service="Penyediaan Tenaga Kerja">Konsultasikan Layanan Ini</a>
+              <a href="#contact" class="service-card__link" data-i18n="services.consultCta" data-service="Penyediaan Tenaga Kerja">Konsultasikan Layanan Ini</a>
             </div>
           </article>
 
@@ -350,13 +393,13 @@
                     <polyline points="10 9 9 9 8 9"></polyline>
                   </svg>
                 </div>
-                <span class="service-card__tag">Tata Kelola SDM</span>
+                <span class="service-card__tag" data-i18n="services.s3Tag">Tata Kelola SDM</span>
               </div>
-              <h3 class="service-card__title">Manajemen Fungsi Sumber Daya Manusia</h3>
-              <p class="service-card__description">Layanan pengelolaan administrasi ketenagakerjaan, sistem kepatuhan hubungan industrial, pengawasan kedisiplinan kerja, dan manajemen kontrak personel.</p>
+              <h3 class="service-card__title" data-i18n="services.s3Title">Manajemen Fungsi Sumber Daya Manusia</h3>
+              <p class="service-card__description" data-i18n="services.s3Desc">Layanan pengelolaan administrasi ketenagakerjaan, sistem kepatuhan hubungan industrial, pengawasan kedisiplinan kerja, dan manajemen kontrak personel.</p>
             </div>
             <div class="service-card__action">
-              <a href="#contact" class="service-card__link" data-service="Manajemen Fungsi SDM">Konsultasikan Layanan Ini</a>
+              <a href="#contact" class="service-card__link" data-i18n="services.consultCta" data-service="Manajemen Fungsi SDM">Konsultasikan Layanan Ini</a>
             </div>
           </article>
 
@@ -369,13 +412,13 @@
                     <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                   </svg>
                 </div>
-                <span class="service-card__tag">Fasilitas Lapangan</span>
+                <span class="service-card__tag" data-i18n="services.s4Tag">Fasilitas Lapangan</span>
               </div>
-              <h3 class="service-card__title">Dukungan Pemeliharaan &amp; Operasional Lapangan</h3>
-              <p class="service-card__description">Dukungan teknis berkala, inspeksi fasilitas penunjang, dan pemeliharaan sarana kerja guna mencegah hambatan operasional di tapak proyek.</p>
+              <h3 class="service-card__title" data-i18n="services.s4Title">Dukungan Pemeliharaan &amp; Operasional Lapangan</h3>
+              <p class="service-card__description" data-i18n="services.s4Desc">Dukungan teknis berkala, inspeksi fasilitas penunjang, dan pemeliharaan sarana kerja guna mencegah hambatan operasional di tapak proyek.</p>
             </div>
             <div class="service-card__action">
-              <a href="#contact" class="service-card__link" data-service="Pemeliharaan Lapangan">Konsultasikan Layanan Ini</a>
+              <a href="#contact" class="service-card__link" data-i18n="services.consultCta" data-service="Pemeliharaan Lapangan">Konsultasikan Layanan Ini</a>
             </div>
           </article>
 
@@ -387,13 +430,13 @@
                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                   </svg>
                 </div>
-                <span class="service-card__tag">Standar Keselamatan</span>
+                <span class="service-card__tag" data-i18n="services.s5Tag">Standar Keselamatan</span>
               </div>
-              <h3 class="service-card__title">Inspeksi Teknis &amp; Uji Tahanan Pembumian</h3>
-              <p class="service-card__description">Pelaksanaan inspeksi keselamatan kerja, joint inspection tahanan pembumian (earthing resistance test), dan audit kepatuhan fasilitas kerja.</p>
+              <h3 class="service-card__title" data-i18n="services.s5Title">Inspeksi Teknis &amp; Uji Tahanan Pembumian</h3>
+              <p class="service-card__description" data-i18n="services.s5Desc">Pelaksanaan inspeksi keselamatan kerja, joint inspection tahanan pembumian (earthing resistance test), dan audit kepatuhan fasilitas kerja.</p>
             </div>
             <div class="service-card__action">
-              <a href="#contact" class="service-card__link" data-service="Inspeksi Teknis">Konsultasikan Layanan Ini</a>
+              <a href="#contact" class="service-card__link" data-i18n="services.consultCta" data-service="Inspeksi Teknis">Konsultasikan Layanan Ini</a>
             </div>
           </article>
 
@@ -407,13 +450,13 @@
                     <path d="M9 15l2 2 4-4"></path>
                   </svg>
                 </div>
-                <span class="service-card__tag">Solusi Terpadu</span>
+                <span class="service-card__tag" data-i18n="services.s6Tag">Solusi Terpadu</span>
               </div>
-              <h3 class="service-card__title">Konsultasi Terpadu &amp; Manajemen Kontrak Proyek</h3>
-              <p class="service-card__description">Pendampingan komprehensif mulai dari perencanaan kebutuhan operasional, tata kelola kepatuhan K3, hingga evaluasi efisiensi kemitraan jangka panjang.</p>
+              <h3 class="service-card__title" data-i18n="services.s6Title">Konsultasi Terpadu &amp; Manajemen Kontrak Proyek</h3>
+              <p class="service-card__description" data-i18n="services.s6Desc">Pendampingan komprehensif mulai dari perencanaan kebutuhan operasional, tata kelola kepatuhan K3, hingga evaluasi efisiensi kemitraan jangka panjang.</p>
             </div>
             <div class="service-card__action">
-              <a href="#contact" class="service-card__link" data-service="Konsultasi Terpadu">Konsultasikan Layanan Ini</a>
+              <a href="#contact" class="service-card__link" data-i18n="services.consultCta" data-service="Konsultasi Terpadu">Konsultasikan Layanan Ini</a>
             </div>
           </article>
         </div>
@@ -426,8 +469,8 @@
           <div class="section-badge">
             <span>Rekam Jejak &amp; Kemitraan</span>
           </div>
-          <h2 class="section-title" id="partners-title">Dipercaya oleh Kontraktor &amp; Industri Terkemuka</h2>
-          <p class="section-description">Kolaborasi strategis dalam proyek hilirisasi, pembangunan smelter tembaga, dan penunjang operasional industri pertambangan nasional.</p>
+          <h2 class="section-title" id="partners-title" data-i18n="partners.title">Dipercaya oleh Kontraktor &amp; Industri Terkemuka</h2>
+          <p class="section-description" data-i18n="partners.desc">Kolaborasi strategis dalam proyek hilirisasi, pembangunan smelter tembaga, dan penunjang operasional industri pertambangan nasional.</p>
         </div>
 
         <div class="partners-grid">
@@ -470,8 +513,8 @@
           <div class="section-badge">
             <span>Tata Kelola &amp; Kepemimpinan</span>
           </div>
-          <h2 class="section-title" id="management-title">Struktur Kepemimpinan Korporat &amp; Manajemen Operasional</h2>
-          <p class="section-description">Kepemimpinan terarah dengan rekam jejak industri solid, didukung divisi manajerial fungsional yang memastikan kepatuhan regulasi hukum, keselamatan kerja K3, serta akuntabilitas finansial proyek.</p>
+          <h2 class="section-title" id="management-title" data-i18n="management.title">Struktur Kepemimpinan Korporat &amp; Manajemen Operasional</h2>
+          <p class="section-description" data-i18n="management.desc">Kepemimpinan terarah dengan rekam jejak industri solid, didukung divisi manajerial fungsional yang memastikan kepatuhan regulasi hukum, keselamatan kerja K3, serta akuntabilitas finansial proyek.</p>
         </div>
 
         <div class="leadership-grid management-grid">
@@ -484,12 +527,12 @@
                 </svg>
               </div>
               <div class="leadership-card__meta">
-                <span class="leadership-card__role-tag">Penanggung Jawab Eksekutif</span>
+                <span class="leadership-card__role-tag" data-i18n="management.dirRole">Penanggung Jawab Eksekutif</span>
                 <h3 class="leadership-card__name">Soejiman</h3>
                 <div class="leadership-card__position">Direktur Utama / Direktur</div>
               </div>
             </div>
-            <p class="leadership-card__bio">Memimpin arah strategis korporasi, kemitraan bisnis industri pertambangan, dan integrasi operasional seluruh unit kerja di PT Karya Satya Buana Indonesia.</p>
+            <p class="leadership-card__bio" data-i18n="management.dirBio">Memimpin arah strategis korporasi, kemitraan bisnis industri pertambangan, dan integrasi operasional seluruh unit kerja di PT Karya Satya Buana Indonesia.</p>
             <div class="leadership-card__legal-badge">
               <span class="legal-badge__dot" aria-hidden="true"></span>
               <span>Penetapan Akta No. 13/2026 &amp; SK Menkumham RI</span>
@@ -507,12 +550,12 @@
                 </svg>
               </div>
               <div class="leadership-card__meta">
-                <span class="leadership-card__role-tag">Pengawasan Tata Kelola</span>
+                <span class="leadership-card__role-tag" data-i18n="management.comRole">Pengawasan Tata Kelola</span>
                 <h3 class="leadership-card__name">Sutopo</h3>
                 <div class="leadership-card__position">Komisaris Perusahaan</div>
               </div>
             </div>
-            <p class="leadership-card__bio">Menjalankan fungsi pengawasan independen terhadap kebijakan direksi, penerapan Good Corporate Governance, kepatuhan audit, dan mitigasi risiko strategis.</p>
+            <p class="leadership-card__bio" data-i18n="management.comBio">Menjalankan fungsi pengawasan independen terhadap kebijakan direksi, penerapan Good Corporate Governance, kepatuhan audit, dan mitigasi risiko strategis.</p>
             <div class="leadership-card__legal-badge">
               <span class="legal-badge__dot" aria-hidden="true"></span>
               <span>Penetapan Akta No. 13/2026 &amp; SK Menkumham RI</span>
@@ -522,8 +565,8 @@
 
         <div class="management-divisions">
           <div class="divisions-header">
-            <h3 class="divisions-title">Divisi Operasional &amp; Manajemen Fungsional</h3>
-            <p class="divisions-subtitle">Tiga pilar divisi di bawah koordinasi operasional General Manager untuk memastikan keandalan eksekusi proyek tapak industri.</p>
+            <h3 class="divisions-title" data-i18n="management.divTitle">Divisi Operasional &amp; Manajemen Fungsional</h3>
+            <p class="divisions-subtitle" data-i18n="management.divSubtitle">Tiga pilar divisi di bawah koordinasi operasional General Manager untuk memastikan keandalan eksekusi proyek tapak industri.</p>
           </div>
 
           <div class="divisions-grid management-grid">
@@ -536,8 +579,8 @@
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
               </div>
-              <h4 class="division-card__title">Sumber Daya Manusia (HR &amp; Hubungan Industrial)</h4>
-              <p class="division-card__lead">Dipimpin oleh Head of HR didukung Assistant HR dan staf personalia lapangan.</p>
+              <h4 class="division-card__title" data-i18n="management.divHrTitle">Sumber Daya Manusia (HR &amp; Hubungan Industrial)</h4>
+              <p class="division-card__lead" data-i18n="management.divHrLead">Dipimpin oleh Head of HR didukung Assistant HR dan staf personalia lapangan.</p>
               <ul class="division-card__list">
                 <li>Rekrutmen dan penempatan tenaga kerja terampil tersertifikasi</li>
                 <li>Penyelenggaraan pelatihan K3 dan kepatuhan norma kerja</li>
@@ -552,8 +595,8 @@
                   <polyline points="9 12 11 14 15 10"></polyline>
                 </svg>
               </div>
-              <h4 class="division-card__title">Legalitas &amp; Kepatuhan Hukum</h4>
-              <p class="division-card__lead">Dipimpin oleh Legal Team didukung Statistics Staff dan kepatuhan perizinan.</p>
+              <h4 class="division-card__title" data-i18n="management.divLegalTitle">Legalitas &amp; Kepatuhan Hukum</h4>
+              <p class="division-card__lead" data-i18n="management.divLegalLead">Dipimpin oleh Legal Team didukung Statistics Staff dan kepatuhan perizinan.</p>
               <ul class="division-card__list">
                 <li>Pengawalan izin operasional pertambangan, NIB, dan KKKPR</li>
                 <li>Kepatuhan kontrak kerjasama bisnis dan perlindungan hukum</li>
@@ -568,8 +611,8 @@
                   <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                 </svg>
               </div>
-              <h4 class="division-card__title">Keuangan &amp; Administrasi Proyek</h4>
-              <p class="division-card__lead">Dipimpin oleh Head of Finance didukung Assistant Finance dan staf akuntansi.</p>
+              <h4 class="division-card__title" data-i18n="management.divFinTitle">Keuangan &amp; Administrasi Proyek</h4>
+              <p class="division-card__lead" data-i18n="management.divFinLead">Dipimpin oleh Head of Finance didukung Assistant Finance dan staf akuntansi.</p>
               <ul class="division-card__list">
                 <li>Pengelolaan arus kas operasional dan anggaran kontrak proyek</li>
                 <li>Kepatuhan administrasi perpajakan resmi terdaftar di DJP</li>
@@ -587,7 +630,7 @@
           <div class="section-badge section-badge--accent">
             <span>Dokumentasi Operasional Lapangan</span>
           </div>
-          <h2 class="section-title" id="gallery-title">Galeri Dokumentasi Teknis &amp; Aktivitas Lapangan</h2>
+          <h2 class="section-title" id="gallery-title" data-i18n="gallery.title">Galeri Dokumentasi Teknis &amp; Aktivitas Lapangan</h2>
         </div>
 
         <div class="gallery-filters" role="tablist" aria-label="Filter Kategori Galeri Portofolio">
@@ -905,7 +948,7 @@
 
         <div class="gallery-actions">
           <button type="button" class="btn btn--secondary btn--compact gallery-load-more" id="gallery-load-more" aria-expanded="false">
-            <span>Muat Lebih Banyak Dokumentasi</span>
+            <span data-i18n="gallery.loadMore">Muat Lebih Banyak Dokumentasi</span>
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -920,8 +963,8 @@
           <div class="section-badge section-badge--accent">
             <span>Kontak &amp; Konsultasi</span>
           </div>
-          <h2 class="section-title" id="contact-title">Hubungi Kami untuk Diskusi Proyek</h2>
-          <p class="section-description">Diskusikan kebutuhan penunjang pertambangan dan pengadaan tenaga kerja perusahaan Anda bersama tim perwakilan kami.</p>
+          <h2 class="section-title" id="contact-title" data-i18n="contact.title">Hubungi Kami untuk Diskusi Proyek</h2>
+          <p class="section-description" data-i18n="contact.desc">Diskusikan kebutuhan penunjang pertambangan dan pengadaan tenaga kerja perusahaan Anda bersama tim perwakilan kami.</p>
         </div>
 
         <div class="contact-grid">
@@ -931,12 +974,12 @@
               
               <div class="office-grid">
                 <div class="office-card office-card--head">
-                  <span class="office-card__badge">Kantor Pusat (Head Office)</span>
+                  <span class="office-card__badge" data-i18n="contact.headOffice">Kantor Pusat (Head Office)</span>
                   <h4 class="office-card__name">Sumbawa Barat, NTB</h4>
                   <p class="office-card__address">Dusun Mantun Barat RT 009 RW 003, Desa Mantun, Kec. Maluk, Kab. Sumbawa Barat, Nusa Tenggara Barat 84459</p>
                 </div>
                 <div class="office-card office-card--branch">
-                  <span class="office-card__badge">Kantor Cabang / Site Office</span>
+                  <span class="office-card__badge" data-i18n="contact.branchOffice">Kantor Cabang / Site Office</span>
                   <h4 class="office-card__name">Pohuwato, Gorontalo</h4>
                   <p class="office-card__address">Dusun Wulungio, Desa Pohuwato Timur, Kec. Marisa, Kab. Pohuwato, Provinsi Gorontalo</p>
                 </div>
@@ -959,7 +1002,7 @@
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
                   <div class="contact-detail-content">
-                    <span class="contact-detail-label">Jam Layanan Operasional</span>
+                    <span class="contact-detail-label" data-i18n="contact.officeHours">Jam Layanan Operasional</span>
                     <span class="contact-detail-value">Senin sampai Jumat, 08:00 sampai 17:00 WITA</span>
                   </div>
                 </li>
@@ -995,7 +1038,7 @@
 
             <div class="contact-map-card contact-map">
               <div class="contact-map-header">
-                <h4 class="contact-map-title">Peta Lokasi Kantor Operasional</h4>
+                <h4 class="contact-map-title" data-i18n="contact.mapTitle">Peta Lokasi Kantor Operasional</h4>
                 <span class="contact-map-badge">Maluk, Sumbawa Barat</span>
               </div>
               <div class="contact-map-wrapper contact-map-container map-wrapper">
@@ -1016,55 +1059,55 @@
                     <polyline points="15 3 21 3 21 9"></polyline>
                     <line x1="10" y1="14" x2="21" y2="3"></line>
                   </svg>
-                  <span>Buka di Google Maps</span>
+                  <span data-i18n="contact.mapBtn">Buka di Google Maps</span>
                 </a>
               </div>
             </div>
           </div>
 
           <div class="inquiry-form-container">
-            <h3 class="inquiry-form-title">Formulir Inquiry Proyek</h3>
-            <p class="inquiry-form-subtitle">Kirimkan rincian kebutuhan Anda dan tim kami akan segera merespons dalam waktu 1x24 jam kerja.</p>
+            <h3 class="inquiry-form-title" data-i18n="contact.formTitle">Formulir Inquiry Proyek</h3>
+            <p class="inquiry-form-subtitle" data-i18n="contact.formSubtitle">Kirimkan rincian kebutuhan Anda dan tim kami akan segera merespons dalam waktu 1x24 jam kerja.</p>
 
             <form id="inquiry-form" class="inquiry-form" novalidate>
               <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
 
               <div class="form-group">
-                <label for="fullName" class="form-label">Nama Lengkap <span class="required">*</span></label>
-                <input type="text" id="fullName" name="fullName" class="form-input" placeholder="Masukkan nama lengkap Anda" required autocomplete="name" aria-describedby="fullName-error">
+                <label for="fullName" class="form-label"><span data-i18n="contact.nameLabel">Nama Lengkap</span> <span class="required">*</span></label>
+                <input type="text" id="fullName" name="fullName" class="form-input" placeholder="Masukkan nama lengkap Anda" data-i18n-placeholder="contact.namePlaceholder" required autocomplete="name" aria-describedby="fullName-error">
                 <span class="form-error" id="fullName-error" aria-live="polite"></span>
               </div>
 
               <div class="form-group">
-                <label for="contactInfo" class="form-label">Email atau Nomor Telepon/WhatsApp <span class="required">*</span></label>
-                <input type="text" id="contactInfo" name="contactInfo" class="form-input" placeholder="contoh@perusahaan.com atau 0812xxxxxxxx" required aria-describedby="contactInfo-error">
+                <label for="contactInfo" class="form-label"><span data-i18n="contact.contactLabel">Email atau Nomor Telepon/WhatsApp</span> <span class="required">*</span></label>
+                <input type="text" id="contactInfo" name="contactInfo" class="form-input" placeholder="contoh@perusahaan.com atau 0812xxxxxxxx" data-i18n-placeholder="contact.contactPlaceholder" required aria-describedby="contactInfo-error">
                 <span class="form-error" id="contactInfo-error" aria-live="polite"></span>
               </div>
 
               <div class="form-group">
-                <label for="serviceType" class="form-label">Kategori Layanan yang Dibutuhkan <span class="required">*</span></label>
+                <label for="serviceType" class="form-label"><span data-i18n="contact.serviceLabel">Kategori Layanan yang Dibutuhkan</span> <span class="required">*</span></label>
                 <select id="serviceType" name="serviceType" class="form-select" required aria-describedby="serviceType-error">
-                  <option value="">Pilih Kategori Layanan...</option>
-                  <option value="Aktivitas Penunjang Pertambangan">Aktivitas Penunjang Pertambangan &amp; Penggalian</option>
-                  <option value="Penyediaan Tenaga Kerja">Penyediaan Tenaga Kerja (Manpower Supply)</option>
-                  <option value="Manajemen Fungsi SDM">Manajemen Fungsi Sumber Daya Manusia</option>
-                  <option value="Pemeliharaan Lapangan">Dukungan Pemeliharaan &amp; Operasional Lapangan</option>
-                  <option value="Inspeksi Teknis">Inspeksi Teknis &amp; Uji Tahanan Pembumian</option>
-                  <option value="Konsultasi Terpadu">Konsultasi Terpadu &amp; Manajemen Kontrak Proyek</option>
+                  <option value="" data-i18n="contact.serviceSelectPlaceholder">Pilih Kategori Layanan...</option>
+                  <option value="Aktivitas Penunjang Pertambangan" data-i18n="contact.sOpt1">Aktivitas Penunjang Pertambangan &amp; Penggalian</option>
+                  <option value="Penyediaan Tenaga Kerja" data-i18n="contact.sOpt2">Penyediaan Tenaga Kerja (Manpower Supply)</option>
+                  <option value="Manajemen Fungsi SDM" data-i18n="contact.sOpt3">Manajemen Fungsi Sumber Daya Manusia</option>
+                  <option value="Pemeliharaan Lapangan" data-i18n="contact.sOpt4">Dukungan Pemeliharaan &amp; Operasional Lapangan</option>
+                  <option value="Inspeksi Teknis" data-i18n="contact.sOpt5">Inspeksi Teknis &amp; Uji Tahanan Pembumian</option>
+                  <option value="Konsultasi Terpadu" data-i18n="contact.sOpt6">Konsultasi Terpadu &amp; Manajemen Kontrak Proyek</option>
                 </select>
                 <span class="form-error" id="serviceType-error" aria-live="polite"></span>
               </div>
 
               <div class="form-group">
-                <label for="message" class="form-label">Rincian Kebutuhan atau Catatan Proyek <span class="required">*</span></label>
-                <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Tuliskan gambaran pekerjaan, durasi proyek, atau jumlah tenaga kerja yang dibutuhkan..." required aria-describedby="message-error"></textarea>
+                <label for="message" class="form-label"><span data-i18n="contact.messageLabel">Rincian Kebutuhan atau Catatan Proyek</span> <span class="required">*</span></label>
+                <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Tuliskan gambaran pekerjaan, durasi proyek, atau jumlah tenaga kerja yang dibutuhkan..." data-i18n-placeholder="contact.messagePlaceholder" required aria-describedby="message-error"></textarea>
                 <span class="form-error" id="message-error" aria-live="polite"></span>
               </div>
 
               <div class="form-feedback" id="form-feedback" role="status" aria-live="polite"></div>
 
               <button type="submit" class="btn btn--primary btn--full" id="submit-btn">
-                <span class="btn__text">Kirim Pesan Inquiry</span>
+                <span class="btn__text" data-i18n="contact.submitBtn">Kirim Pesan Inquiry</span>
                 <span class="btn__spinner" aria-hidden="true"></span>
               </button>
             </form>
@@ -1080,14 +1123,14 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-brand__title">PT Karya Satya Buana Indonesia</div>
-          <p class="footer-brand__description">Perusahaan penyedia jasa penunjang aktivitas pertambangan dan manajemen sumber daya manusia profesional dengan komitmen integritas dan kepatuhan standar industri tinggi.</p>
+          <p class="footer-brand__description" data-i18n="footer.desc">Perusahaan penyedia jasa penunjang aktivitas pertambangan dan manajemen sumber daya manusia profesional dengan komitmen integritas dan kepatuhan standar industri tinggi.</p>
           <div class="footer-legal-tag">
             <span>Perseroan Terbatas Resmi Republik Indonesia</span>
           </div>
         </div>
 
         <div class="footer-nav">
-          <div class="footer-nav__title">Navigasi Halaman</div>
+          <div class="footer-nav__title" data-i18n="footer.quickNavTitle">Navigasi Halaman</div>
           <ul class="footer-nav__list">
             <li><a href="#hero" class="footer-nav__link">Beranda</a></li>
             <li><a href="#about" class="footer-nav__link">Tentang Kami</a></li>
@@ -1104,7 +1147,7 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 PT Karya Satya Buana Indonesia. Seluruh hak cipta dilindungi undang-undang.</div>
+        <div data-i18n="footer.copyright">&copy; 2026 PT Karya Satya Buana Indonesia. Seluruh hak cipta dilindungi undang-undang.</div>
         <div>Domisili Resmi: Kabupaten Sumbawa Barat, Nusa Tenggara Barat</div>
       </div>
     </div>
