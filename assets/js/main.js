@@ -531,7 +531,11 @@ const initializeCompanyProfile = () => {
           loadMoreButton.classList.remove('is-hidden');
           const spanText = loadMoreButton.querySelector('span');
           if (spanText) {
-            spanText.textContent = isLoadMoreExpanded ? 'Tampilkan Lebih Sedikit' : 'Muat Lebih Banyak Dokumentasi';
+            const allTranslations = getTranslationsDict();
+            const activeDict = (allTranslations && allTranslations[currentLang]) ? allTranslations[currentLang] : (allTranslations?.id || {});
+            const loadLessText = activeDict.gallery?.loadLess || 'Tampilkan Lebih Sedikit';
+            const loadMoreText = activeDict.gallery?.loadMore || 'Muat Lebih Banyak Dokumentasi';
+            spanText.textContent = isLoadMoreExpanded ? loadLessText : loadMoreText;
           }
           loadMoreButton.setAttribute('aria-expanded', isLoadMoreExpanded ? 'true' : 'false');
         }

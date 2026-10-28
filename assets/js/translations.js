@@ -88,7 +88,16 @@ const TRANSLATIONS = {
       divLegalTitle: 'Legalitas & Kepatuhan Hukum',
       divLegalLead: 'Dipimpin oleh Legal Team didukung Statistics Staff dan kepatuhan perizinan.',
       divFinTitle: 'Keuangan & Administrasi Proyek',
-      divFinLead: 'Dipimpin oleh Head of Finance didukung Assistant Finance dan staf akuntansi.'
+      divFinLead: 'Dipimpin oleh Head of Finance didukung Assistant Finance dan staf akuntansi.',
+      divHrItem1: 'Rekrutmen dan penempatan tenaga kerja terampil tersertifikasi',
+      divHrItem2: 'Penyelenggaraan pelatihan K3 dan kepatuhan norma kerja',
+      divHrItem3: 'Pengelolaan relasi ketenagakerjaan yang kondusif dan harmonis',
+      divLegalItem1: 'Pengawalan izin operasional pertambangan, NIB, dan KKKPR',
+      divLegalItem2: 'Kepatuhan kontrak kerjasama bisnis dan perlindungan hukum',
+      divLegalItem3: 'Monitoring regulasi lingkungan hidup dan keselamatan kerja',
+      divFinItem1: 'Pengelolaan arus kas operasional dan anggaran kontrak proyek',
+      divFinItem2: 'Kepatuhan administrasi perpajakan resmi terdaftar di DJP',
+      divFinItem3: 'Pelaporan berkala akuntansi dan audit keuangan transparan'
     },
     gallery: {
       badge: 'Dokumentasi Operasional Lapangan',
@@ -127,7 +136,16 @@ const TRANSLATIONS = {
       messagePlaceholder: 'Tuliskan gambaran pekerjaan, durasi proyek, atau jumlah tenaga kerja yang dibutuhkan...',
       submitBtn: 'Kirim Pesan Inquiry',
       mapTitle: 'Peta Lokasi Kantor Operasional',
-      mapBtn: 'Buka di Google Maps'
+      mapBtn: 'Buka di Google Maps',
+      infoTitle: 'Informasi Kantor Resmi',
+      domicileLabel: 'Domisili & Lokasi Kantor',
+      officeHoursVal: 'Senin sampai Jumat, 08:00 sampai 17:00 WITA',
+      emailLabel: 'Email Korespondensi',
+      emailAdmin: 'Administrasi: ptkaryasatyabuanaindo@gmail.com',
+      phoneLabel: 'Saluran WhatsApp & Telepon Kantor',
+      waChatLabel: '(WhatsApp Chat)',
+      officePhone: 'Telepon Kantor: +62 813-6177-9695',
+      waBtn: 'Mulai Chat WhatsApp'
     },
     validation: {
       nameReq: 'Nama lengkap wajib diisi minimal 3 karakter.',
@@ -141,7 +159,14 @@ const TRANSLATIONS = {
       desc: 'Perusahaan penyedia jasa penunjang aktivitas pertambangan dan manajemen sumber daya manusia profesional dengan komitmen integritas dan kepatuhan standar industri tinggi.',
       legalBadge: 'Perseroan Terbatas Resmi Republik Indonesia',
       quickNavTitle: 'Navigasi Halaman',
-      copyright: '© 2026 PT Karya Satya Buana Indonesia. Seluruh hak cipta dilindungi undang-undang.'
+      copyright: '© 2026 PT Karya Satya Buana Indonesia. Seluruh hak cipta dilindungi undang-undang.',
+      navHome: 'Beranda',
+      navAbout: 'Tentang Kami',
+      navServices: 'Layanan & Kapabilitas',
+      navManagement: 'Struktur Manajemen',
+      navGallery: 'Galeri Lapangan',
+      navContact: 'Kontak & Konsultasi',
+      domicile: 'Domisili Resmi: Kabupaten Sumbawa Barat, Nusa Tenggara Barat'
     }
   },
   en: {
@@ -233,7 +258,16 @@ const TRANSLATIONS = {
       divLegalTitle: 'Legal & Regulatory Compliance',
       divLegalLead: 'Led by Legal Team supported by Statistics Staff and statutory licensing experts.',
       divFinTitle: 'Finance & Project Administration',
-      divFinLead: 'Led by Head of Finance supported by Assistant Finance and accounting staff.'
+      divFinLead: 'Led by Head of Finance supported by Assistant Finance and accounting staff.',
+      divHrItem1: 'Recruitment and placement of certified skilled labor',
+      divHrItem2: 'HSE safety training and workplace standards compliance',
+      divHrItem3: 'Fostering harmonious and constructive industrial relations',
+      divLegalItem1: 'Mining operational licensing, NIB, and spatial permit compliance',
+      divLegalItem2: 'Commercial contract compliance and legal protections',
+      divLegalItem3: 'Environmental regulation and workplace safety monitoring',
+      divFinItem1: 'Operational cash flow and project contract budget management',
+      divFinItem2: 'Official tax administration compliance registered with DGT',
+      divFinItem3: 'Periodic accounting reporting and transparent financial audits'
     },
     gallery: {
       badge: 'Field Operations Documentation',
@@ -272,7 +306,16 @@ const TRANSLATIONS = {
       messagePlaceholder: 'Describe the scope of work, project duration, or estimated manpower required...',
       submitBtn: 'Send Inquiry Message',
       mapTitle: 'Operational Office Location Map',
-      mapBtn: 'Open in Google Maps'
+      mapBtn: 'Open in Google Maps',
+      infoTitle: 'Official Office Information',
+      domicileLabel: 'Domicile & Office Location',
+      officeHoursVal: 'Monday to Friday, 08:00 to 17:00 WITA',
+      emailLabel: 'Correspondence Email',
+      emailAdmin: 'Administration: ptkaryasatyabuanaindo@gmail.com',
+      phoneLabel: 'WhatsApp Channel & Office Phone',
+      waChatLabel: '(WhatsApp Chat)',
+      officePhone: 'Office Phone: +62 813-6177-9695',
+      waBtn: 'Start WhatsApp Chat'
     },
     validation: {
       nameReq: 'Full name is required (minimum 3 characters).',
@@ -286,7 +329,14 @@ const TRANSLATIONS = {
       desc: 'Professional provider of mining support operations and workforce management committed to the highest standards of integrity and industry compliance.',
       legalBadge: 'Officially Incorporated Limited Liability Company of Indonesia',
       quickNavTitle: 'Page Navigation',
-      copyright: '© 2026 PT Karya Satya Buana Indonesia. All rights reserved.'
+      copyright: '© 2026 PT Karya Satya Buana Indonesia. All rights reserved.',
+      navHome: 'Home',
+      navAbout: 'About Us',
+      navServices: 'Services & Capabilities',
+      navManagement: 'Management Structure',
+      navGallery: 'Field Gallery',
+      navContact: 'Contact & Consultation',
+      domicile: 'Official Domicile: West Sumbawa Regency, West Nusa Tenggara'
     }
   },
   zh: {
@@ -378,7 +428,16 @@ const TRANSLATIONS = {
       divLegalTitle: '法务与政策合规部',
       divLegalLead: '由法务团队领导，下设统计专员与行业准入许可专员。',
       divFinTitle: '财务与项目行政部',
-      divFinLead: '由财务总监领导，下设财务助理及专业会计核算人员。'
+      divFinLead: '由财务总监领导，下设财务助理及专业会计核算人员。',
+      divHrItem1: '持证熟练专业技术人员的甄选与派驻',
+      divHrItem2: '职业健康安全 (HSE) 培训与用工规范合规',
+      divHrItem3: '构建和谐稳定且富有成效的劳资合作关系',
+      divLegalItem1: '采矿运营许可、商业登记证 (NIB) 与空间合规把关',
+      divLegalItem2: '商业合作合同全生命周期履约与法律权益保障',
+      divLegalItem3: '生态环境保护法规跟踪与安全生产合规监控',
+      divFinItem1: '运营现金流管控与工程项目合同预算执行',
+      divFinItem2: '国家税务总局 (DJP) 注册合法税务行政合规',
+      divFinItem3: '定期会计核算报表编制与透明财务审计支持'
     },
     gallery: {
       badge: '现场作业实景',
@@ -417,7 +476,16 @@ const TRANSLATIONS = {
       messagePlaceholder: '请简述工程范围、工期安排或预计所需人员数量...',
       submitBtn: '提交业务咨询',
       mapTitle: '运营办公室地理位置',
-      mapBtn: '在谷歌地图中查看'
+      mapBtn: '在谷歌地图中查看',
+      infoTitle: '官方办公信息',
+      domicileLabel: '法定地址与办公地点',
+      officeHoursVal: '周一至周五，08:00 至 17:00 (WITA)',
+      emailLabel: '业务联络邮箱',
+      emailAdmin: '行政事务：ptkaryasatyabuanaindo@gmail.com',
+      phoneLabel: 'WhatsApp 专线与办公电话',
+      waChatLabel: '(WhatsApp 咨询)',
+      officePhone: '办公电话：+62 813-6177-9695',
+      waBtn: '发起 WhatsApp 对话'
     },
     validation: {
       nameReq: '请输入姓名 (至少 3 个字符)。',
@@ -431,7 +499,14 @@ const TRANSLATIONS = {
       desc: '立足印尼的专业采矿辅助运营与人力资源管理企业，以诚信合规和高标准行业规范为基石。',
       legalBadge: '印度尼西亚共和国法定注册有限责任公司',
       quickNavTitle: '页面快速导航',
-      copyright: '© 2026 PT Karya Satya Buana Indonesia. 版权所有，保留一切权利。'
+      copyright: '© 2026 PT Karya Satya Buana Indonesia. 版权所有，保留一切权利。',
+      navHome: '首页',
+      navAbout: '关于我们',
+      navServices: '服务与业务资质',
+      navManagement: '管理架构',
+      navGallery: '现场工程图集',
+      navContact: '业务联系与咨询',
+      domicile: '官方注册地：西努沙登加拉省西松巴哇县'
     }
   }
 };
